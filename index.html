@@ -1,884 +1,566 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101C2C">
-
-<title>Powderly Deal Room | Birmingham Investment Property</title>
-
-<meta name="description" content="Explore an off-market residential investment opportunity in Birmingham, Alabama. Review property details and submit your buyer inquiry.">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Investment Deal Room</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-:root {
-  --navy: #101C2C;
-  --navy-light: #192B40;
-  --ivory: #F7F5F0;
-  --gold: #B69A62;
-  --charcoal: #292D32;
-  --muted: #777D83;
-  --white: #FFFFFF;
-  --border: #E7E3DB;
+/* Layout concept: one narrow deal-sheet column. A dark green hero carries the three
+   profit figures; below it a locked file list and the unlock form; unlocking swaps in
+   the full file. Owners get a second view with ranked leads. */
+:root{
+  --bg:#EEF2EC; --surface:#FFFFFF; --surface-2:#E3EAE1; --ink:#0E2218; --muted:#52645A; --line:#CCD6CB;
+  --brand:#0F4A32; --brand-ink:#F3F7F1; --gold:#E3BF55; --gold-soft:#F2E6BC; --gold-ink:#5A4408;
+  --hero:#0B3524; --hero-2:#14472F; --hero-ink:#F1F6F2; --hero-muted:#A9C2B4;
+  --good:#17794A; --good-bg:#DCEFE4; --warn:#8A5C0E; --warn-bg:#F6E9C8; --bad:#A93329; --bad-bg:#F6DAD6;
+  --focus:#1D6B4A; --scrim:rgba(4,10,7,.94); --scrim-ink:#F1F6F2;
+  --font-display:'Bricolage Grotesque','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --font-body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--ivory);
-  color: var(--charcoal);
-  line-height: 1.65;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.container {
-  width: min(1120px, 90%);
-  margin: auto;
-}
-
-/* HEADER */
-
-header {
-  background: var(--navy);
-  color: white;
-  padding: 23px 0;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.brand {
-  font-size: 15px;
-  letter-spacing: 2px;
-  font-weight: 700;
-}
-
-.brand span {
-  color: var(--gold);
-}
-
-.nav-label {
-  color: #D8DCE1;
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-/* HERO */
-
-.hero {
-  background: var(--navy);
-  color: white;
-  padding: 82px 0 90px;
-}
-
-.eyebrow {
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(38px, 6vw, 66px);
-  line-height: 1.12;
-  font-weight: 500;
-  max-width: 760px;
-  margin-bottom: 22px;
-}
-
-.hero p {
-  max-width: 650px;
-  color: #D1D7DF;
-  font-size: 16px;
-  margin-bottom: 32px;
-}
-
-.hero-address {
-  color: #E7D9BA;
-  font-size: 13px;
-  letter-spacing: .5px;
-  margin-bottom: 28px;
-}
-
-.button {
-  display: inline-block;
-  padding: 14px 24px;
-  background: var(--gold);
-  color: var(--navy);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: 0;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.button:hover {
-  background: #D0B77E;
-}
-
-/* MAIN CONTENT */
-
-section {
-  padding: 76px 0;
-}
-
-.section-heading {
-  font-family: 'Playfair Display', serif;
-  color: var(--navy);
-  font-size: clamp(29px, 4vw, 40px);
-  line-height: 1.2;
-  margin-bottom: 13px;
-}
-
-.section-intro {
-  color: var(--muted);
-  max-width: 650px;
-  margin-bottom: 38px;
-  font-size: 14px;
-}
-
-.property-overview {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 55px;
-  align-items: start;
-}
-
-.property-description {
-  color: #555D65;
-  font-size: 15px;
-  margin-top: 18px;
-}
-
-.property-description p {
-  margin-bottom: 15px;
-}
-
-.property-facts {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid var(--border);
-  margin-top: 28px;
-}
-
-.fact {
-  padding: 19px 12px 19px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.fact-label {
-  color: var(--muted);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.3px;
-  margin-bottom: 5px;
-}
-
-.fact-value {
-  color: var(--navy);
-  font-size: 17px;
-  font-weight: 700;
-}
-
-/* INVESTMENT SUMMARY */
-
-.summary {
-  background: white;
-  padding: 32px;
-  border: 1px solid var(--border);
-}
-
-.summary h3 {
-  color: var(--navy);
-  font-family: 'Playfair Display', serif;
-  font-size: 23px;
-  margin-bottom: 24px;
-}
-
-.summary-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 15px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-}
-
-.summary-row span:first-child {
-  color: var(--muted);
-}
-
-.summary-row strong {
-  color: var(--navy);
-  text-align: right;
-}
-
-.summary-row.highlight strong {
-  color: #927443;
-  font-size: 19px;
-}
-
-.disclaimer {
-  margin-top: 22px;
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-/* INVESTMENT DETAILS */
-
-.details-section {
-  background: #EEECE6;
-}
-
-.details-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 35px;
-  margin-top: 38px;
-}
-
-.detail-item {
-  border-top: 2px solid var(--gold);
-  padding-top: 20px;
-}
-
-.detail-item h3 {
-  font-family: 'Playfair Display', serif;
-  color: var(--navy);
-  font-size: 21px;
-  margin-bottom: 10px;
-}
-
-.detail-item p {
-  color: #666D74;
-  font-size: 13px;
-}
-
-/* LOCATION */
-
-.location-box {
-  background: var(--navy);
-  color: white;
-  padding: 43px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
-}
-
-.location-box h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.location-box p {
-  color: #D0D5DC;
-  font-size: 13px;
-}
-
-/* FORM */
-
-.inquiry-section {
-  background: white;
-}
-
-.form-layout {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 65px;
-  align-items: start;
-}
-
-.form-note {
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: 18px;
-}
-
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 17px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.form-group.full {
-  grid-column: 1 / -1;
-}
-
-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: .6px;
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #DDDAD3;
-  background: #FCFBF9;
-  color: var(--charcoal);
-  font-family: inherit;
-  font-size: 13px;
-  outline: none;
-  border-radius: 0;
-}
-
-input:focus, select:focus, textarea:focus {
-  border-color: var(--gold);
-}
-
-textarea {
-  resize: vertical;
-}
-
-.form-submit {
-  grid-column: 1 / -1;
-}
-
-.form-submit button {
-  width: 100%;
-  font-family: inherit;
-}
-
-#formStatus {
-  grid-column: 1 / -1;
-  font-size: 13px;
-  color: #315F48;
-  margin-top: 5px;
-}
-
-/* FOOTER */
-
-footer {
-  background: var(--navy);
-  color: white;
-  padding: 38px 0;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.footer-brand {
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  font-size: 13px;
-}
-
-.footer-copy {
-  color: #AEB7C1;
-  font-size: 11px;
-  margin-top: 7px;
-}
-
-.footer-right {
-  color: #D1D5DA;
-  font-size: 12px;
-  text-align: right;
-}
-
-/* MOBILE */
-
-@media(max-width: 760px) {
-  .hero {
-    padding: 60px 0;
-  }
-
-  .property-overview,
-  .form-layout {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .details-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .location-box {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 30px;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-right {
-    text-align: left;
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#09130D; --surface:#12201A; --surface-2:#19291F; --ink:#E6EEE8; --muted:#97AB9F; --line:#24382C;
+    --brand:#4DAA7E; --brand-ink:#07130C; --gold:#E3BF55; --gold-soft:#3A3115; --gold-ink:#F2E6BC;
+    --hero:#0D2A1D; --hero-2:#143826; --hero-ink:#EEF5F0; --hero-muted:#9DB9A9;
+    --good:#4CC38A; --good-bg:#12382A; --warn:#E0B04A; --warn-bg:#3A3115; --bad:#EF7B6F; --bad-bg:#3E1D1A;
+    --focus:#6CCB9D; color-scheme:dark;
   }
 }
-
-@media(max-width: 480px) {
-  .nav-label {
-    font-size: 10px;
-  }
-
-  form {
-    grid-template-columns: 1fr;
-  }
-
-  .form-group.full,
-  .form-submit {
-    grid-column: auto;
-  }
-
-  .summary {
-    padding: 23px;
-  }
+:root[data-theme="dark"]{
+  --bg:#09130D; --surface:#12201A; --surface-2:#19291F; --ink:#E6EEE8; --muted:#97AB9F; --line:#24382C;
+  --brand:#4DAA7E; --brand-ink:#07130C; --gold:#E3BF55; --gold-soft:#3A3115; --gold-ink:#F2E6BC;
+  --hero:#0D2A1D; --hero-2:#143826; --hero-ink:#EEF5F0; --hero-muted:#9DB9A9;
+  --good:#4CC38A; --good-bg:#12382A; --warn:#E0B04A; --warn-bg:#3A3115; --bad:#EF7B6F; --bad-bg:#3E1D1A;
+  --focus:#6CCB9D; color-scheme:dark;
 }
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.55;
+  padding-block:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3,p,dl,dd,ul,figure{margin:0}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;line-height:1.1;letter-spacing:-0.01em}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.page{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:20px;padding-block:16px 56px}
+.page > *{min-width:0}
+ 
+/* top bar */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tag svg{flex:none}
+ 
+/* owner bar */
+.ownerbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.ownerbar .label{font-size:13px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{background:transparent;border:0;padding:8px 14px;cursor:pointer;font-weight:500;min-height:40px}
+.seg button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink)}
+ 
+/* hero */
+.hero{background:var(--hero);color:var(--hero-ink);border-radius:14px;padding:clamp(20px,4vw,36px);display:flex;flex-direction:column;gap:22px;
+  border-bottom:4px solid var(--gold)}
+.hero .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(28px,5.2vw,46px);font-weight:800;max-width:18ch}
+.stats{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px}
+.stat{background:var(--hero-2);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.stat-num{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,6vw,52px);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.stat.main .stat-num{font-size:clamp(44px,9vw,76px)}
+.stat-label{font-weight:600}
+.stat-sub{font-size:14px;color:var(--hero-muted)}
+ 
+/* teaser photos */
+.teaser h2,.snap h2{font-size:24px;font-weight:700}
+.tgrid{display:grid;gap:8px;margin-top:14px}
+.tgrid figure{margin:0;min-width:0;overflow:hidden;border-radius:10px;background:var(--surface-2)}
+.tgrid img{width:100%;height:100%;object-fit:cover;display:block}
+.tgrid.n1{grid-template-columns:1fr;grid-auto-rows:clamp(200px,38vw,380px)}
+.tgrid.n2{grid-template-columns:3fr 2fr;grid-auto-rows:clamp(190px,32vw,320px)}
+.tgrid.many{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(110px,19vw,190px)}
+.tgrid.many figure:first-child{grid-column:span 2;grid-row:span 2}
+ 
+/* market snapshot */
+.snap .lead{color:var(--muted);margin-top:6px;max-width:62ch}
+.bars{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.brow{display:grid;grid-template-columns:190px 1fr 76px;gap:12px;align-items:center}
+.bl{font-weight:600}
+.bt{height:14px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bt i{display:block;height:100%;background:var(--brand);border-radius:99px}
+.bt i.alt{background:var(--muted)}
+.brow b{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+.pts{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:14px}
+.pts li{border-top:1px solid var(--line);padding-top:12px}
+.pts .src{font-size:13px;color:var(--muted);margin-top:4px}
+.pts a,.snap .foot a{color:var(--brand);text-decoration:underline;text-underline-offset:2px}
+.snap .foot{font-size:13px;color:var(--muted);margin-top:16px;max-width:75ch}
+ 
+/* locked list */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:clamp(16px,3vw,26px)}
+.locked h2,.gate h2{font-size:24px;font-weight:700}
+.locked .lead,.gate .lead{color:var(--muted);margin-top:6px;max-width:60ch}
+.locks{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.locks li{display:flex;align-items:center;gap:12px;border:1px dashed var(--line);border-radius:10px;padding:12px;min-width:0}
+.locks svg{flex:none;color:var(--muted)}
+.locks .t{display:flex;flex-direction:column;min-width:0}
+.locks .t b{font-weight:600}
+.locks .blur{font-family:var(--font-mono);font-size:13px;color:var(--muted);filter:blur(5px);user-select:none;white-space:nowrap;overflow:hidden}
+ 
+/* gate form */
+.gate{border-color:var(--brand);border-width:2px}
+form.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-weight:600;font-size:14px}
+.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 12px;min-height:46px;width:100%}
+.field textarea{min-height:84px;resize:vertical}
+.field input[aria-invalid="true"]{border-color:var(--bad)}
+.err{color:var(--bad);font-size:13px;min-height:0}
+.field .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;font-weight:400;color:var(--muted)}
+.check input{margin-top:3px;width:18px;height:18px;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;border:1px solid var(--brand);background:var(--brand);color:var(--brand-ink);
+  padding:12px 20px;min-height:46px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--brand)}
+.btn.small{min-height:36px;padding:6px 12px;font-size:14px}
+.fine{font-size:13px;color:var(--muted)}
+ 
+/* private file */
+.private{display:flex;flex-direction:column;gap:20px}
+.notice{background:var(--warn-bg);color:var(--ink);border:1px solid var(--warn);border-radius:10px;padding:12px 14px;font-size:15px}
+.property{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(16px,3vw,28px);align-items:start}
+.property img{width:100%;aspect-ratio:588/260;object-fit:cover;border-radius:10px;display:block}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.gallery img{aspect-ratio:4/3}
+.eyebrow-dark{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.address{font-size:clamp(24px,4vw,34px);font-weight:700;margin-top:6px;overflow-wrap:anywhere}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;margin-top:18px}
+.facts div{border-top:1px solid var(--line);padding-top:8px}
+.facts dt{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.facts dd{font-weight:600}
+ 
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-weight:600;cursor:pointer;min-height:42px}
+.tab[aria-selected="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.panel{margin-top:16px;display:flex;flex-direction:column;gap:18px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.two > *{min-width:0}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+caption{text-align:left;font-weight:600;padding-bottom:8px;font-family:var(--font-display);font-size:18px}
+th,td{padding:9px 0;border-bottom:1px solid var(--line);text-align:left;font-weight:400}
+td:last-child{text-align:right;font-family:var(--font-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:600;border-bottom:2px solid var(--brand)}
+.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.res{background:var(--surface-2);border-radius:10px;padding:14px;min-width:0}
+.res .n{font-family:var(--font-display);font-weight:800;font-size:clamp(22px,4vw,32px);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.res .l{font-size:13px;color:var(--muted)}
+.slider{display:flex;flex-direction:column;gap:8px}
+.slider .row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+input[type=range]{width:100%;accent-color:var(--brand);min-height:32px}
+.big-profit{background:var(--surface-2);border-radius:10px;padding:18px}
+.big-profit .n{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,6vw,52px);font-variant-numeric:tabular-nums}
+ 
+.comps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.comp{border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:0}
+.comp img{width:100%;aspect-ratio:340/156;object-fit:cover;display:block}
+.comp div{padding:10px 12px}
+.comp b{font-family:var(--font-mono);font-size:18px}
+.comp span.addr{color:var(--ink);font-weight:600;overflow-wrap:anywhere;margin:2px 0 4px}
+.comp span{display:block;font-size:14px;color:var(--muted)}
+.checks{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:10px}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks svg{flex:none;margin-top:3px;color:var(--good)}
+.status{margin-top:12px;font-weight:600}
+ 
+/* dashboard */
+.dash{display:flex;flex-direction:column;gap:16px}
+.sumrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.sum{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+.sum .n{font-family:var(--font-display);font-weight:800;font-size:30px;font-variant-numeric:tabular-nums}
+.sum .l{font-size:13px;color:var(--muted)}
+.lead-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.lead-top{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.lead-name{font-family:var(--font-display);font-weight:700;font-size:22px;overflow-wrap:anywhere}
+.badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:4px 12px;font-weight:700;font-size:14px}
+.badge.hot{background:var(--good-bg);color:var(--good)}
+.badge.warm{background:var(--warn-bg);color:var(--warn)}
+.badge.lukewarm{background:var(--surface-2);color:var(--ink)}
+.badge.cold{background:var(--bad-bg);color:var(--bad)}
+.scorebar{height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.scorebar i{display:block;height:100%;background:var(--brand)}
+.contacts{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.contacts span{display:inline-flex;gap:8px;align-items:center;overflow-wrap:anywhere;min-width:0}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.metrics div{border-top:1px solid var(--line);padding-top:6px}
+.metrics dt{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.metrics dd{font-family:var(--font-mono);font-weight:500;font-variant-numeric:tabular-nums}
+.sec-bars{display:flex;flex-direction:column;gap:6px}
+.sec-bars .r{display:grid;grid-template-columns:110px 1fr 56px;gap:8px;align-items:center;font-size:14px}
+.sec-bars .bar{height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.sec-bars .bar i{display:block;height:100%;background:var(--brand)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--surface-2);border-radius:999px;padding:3px 10px;font-size:13px}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;font-size:13px;color:var(--muted)}
+.parts b{display:block;color:var(--ink);font-family:var(--font-mono);font-weight:500}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:28px;text-align:center;color:var(--muted)}
+details.note{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+details.note summary{cursor:pointer;font-weight:600}
+details.note p{margin-top:8px;color:var(--muted);font-size:15px}
+.legal{font-size:13px;color:var(--muted);max-width:75ch}
+ 
+/* collapsible market info */
+.snap summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px}
+.snap summary::-webkit-details-marker{display:none}
+.snap summary .sn{display:block;font-family:var(--font-display);font-size:22px;font-weight:700;line-height:1.15;margin-top:2px}
+.snap summary svg{flex:none;transition:transform .2s}
+.snap[open] summary svg{transform:rotate(180deg)}
+.snap .snapbody{margin-top:10px}
+ 
+/* photos and viewer */
+.lbitem{display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:inherit;overflow:hidden}
+.hero-photo{display:flex;flex-direction:column;gap:8px;min-width:0}
+.hero-photo .main-photo{border-radius:10px;overflow:hidden}
+.thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.thumbs .lbitem{aspect-ratio:4/3;border-radius:8px}
+.thumbs .lbitem img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover}
+.viewall{align-self:flex-start}
+.lb{position:fixed;inset:0;z-index:50;background:var(--scrim);color:var(--scrim-ink);display:flex;flex-direction:column;
+  padding:env(safe-area-inset-top,0px) max(12px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(12px,env(safe-area-inset-left,0px))}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+.lb-btn{background:transparent;border:1px solid currentColor;color:inherit;border-radius:8px;padding:8px 16px;min-height:44px;cursor:pointer;font-weight:600}
+.lb-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;position:relative}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid currentColor;background:var(--scrim);color:inherit;font-size:26px;line-height:1;cursor:pointer}
+.lb-nav.prev{left:4px}.lb-nav.next{right:4px}
+.lb-hint{text-align:center;font-size:13px;opacity:.75;padding:10px 0}
+ 
+/* systems checklist */
+.sys{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sys li{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}
+.sys .ic{flex:none;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--surface-2);color:var(--ink)}
+.sys .nm{font-weight:600;display:block}
+.sys .st{display:block;font-size:14px;color:var(--good)}
+.sys li.fix .ic{background:var(--warn-bg);color:var(--warn)}
+.sys li.fix .st{color:var(--warn)}
+ 
+/* investment summary */
+.sumhead{background:var(--surface-2);border-radius:10px;padding:16px}
+.sumhead .n{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,6vw,48px);font-variant-numeric:tabular-nums;line-height:1.05}
+.sumhead .l{font-size:14px;color:var(--muted);margin-top:4px}
+.summary .checks{margin-top:0}
+ 
+/* offer */
+.flag{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:var(--gold);color:#2B2005;border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px}
+.offerflag{background:var(--gold-soft);color:var(--gold-ink);border:1px solid var(--gold);border-radius:10px;padding:12px 14px;margin-top:12px;font-weight:600}
+.field .hint{font-size:13px;color:var(--muted)}
+.field .pre{position:relative}
+.dep{background:var(--surface-2);border-radius:10px;padding:12px 14px;font-size:15px}
+ 
+@media (max-width:760px){
+  .stats{grid-template-columns:1fr}
+  .property,.two{grid-template-columns:1fr}
+  .comps{grid-template-columns:1fr}
+  .results{grid-template-columns:1fr}
+  .locks,form.fields{grid-template-columns:1fr}
+  .tgrid.n2{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sys{grid-template-columns:1fr}
+  .brow{grid-template-columns:1fr auto}
+  .brow .bt{grid-column:1/-1;order:3}
+  .sumrow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sec-bars .r{grid-template-columns:90px 1fr 48px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="container nav">
-    <a href="#" class="brand">DEAL <span>ROOM</span></a>
-    <div class="nav-label">Residential Investment Opportunity</div>
-  </div>
-</header>
-
-<main>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="eyebrow">Investment Property · Birmingham, Alabama</div>
-
-      <h1>A Residential Investment Opportunity in Birmingham.</h1>
-
-      <div class="hero-address">
-        2129 Powderly Ave SW, Birmingham, AL 35211
-      </div>
-
-      <p>
-        Review the property details, explore the investment figures
-        and submit your inquiry if this opportunity aligns with your
-        acquisition criteria.
-      </p>
-
-      <a href="#buyer-inquiry" class="button">Submit Buyer Inquiry</a>
-    </div>
-  </section>
-
-  <!-- OVERVIEW -->
-  <section>
-    <div class="container property-overview">
-
-      <div>
-        <div class="eyebrow">Property Overview</div>
-
-        <h2 class="section-heading">
-          Evaluate the Opportunity.
-        </h2>
-
-        <div class="property-description">
-          <p>
-            This residential property is being presented as an
-            as-is investment opportunity in Birmingham, Alabama.
-          </p>
-
-          <p>
-            The property is described as requiring a full renovation.
-            Buyers should conduct their own inspection, verify the
-            property's condition and independently assess all
-            renovation requirements before proceeding.
-          </p>
-
-          <p>
-            Suitable acquisition strategies may include a fix-and-flip
-            or buy-and-hold approach, subject to each buyer's own
-            financial analysis and due diligence.
-          </p>
-        </div>
-
-        <div class="property-facts">
-
-          <div class="fact">
-            <div class="fact-label">Property Type</div>
-            <div class="fact-value">Single-Family</div>
-          </div>
-
-          <div class="fact">
-            <div class="fact-label">Bedrooms</div>
-            <div class="fact-value">3</div>
-          </div>
-
-          <div class="fact">
-            <div class="fact-label">Bathrooms</div>
-            <div class="fact-value">1</div>
-          </div>
-
-          <div class="fact">
-            <div class="fact-label">Living Area</div>
-            <div class="fact-value">1,000+ Sq Ft</div>
-          </div>
-
-          <div class="fact">
-            <div class="fact-label">Condition</div>
-            <div class="fact-value">Full Rehab</div>
-          </div>
-
-          <div class="fact">
-            <div class="fact-label">Sale Condition</div>
-            <div class="fact-value">As-Is</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- INVESTMENT FIGURES -->
-      <aside class="summary">
-        <h3>Investment Snapshot</h3>
-
-        <div class="summary-row highlight">
-          <span>Contract Price</span>
-          <strong>$30,000</strong>
-        </div>
-
-        <div class="summary-row">
-          <span>Estimated ARV</span>
-          <strong>$100,000+</strong>
-        </div>
-
-        <div class="summary-row">
-          <span>Estimated Monthly Rent</span>
-          <strong>$1,000–$1,200</strong>
-        </div>
-
-        <div class="summary-row">
-          <span>Investment Strategy</span>
-          <strong>Flip / Hold</strong>
-        </div>
-
-        <div class="summary-row">
-          <span>Buyer Requirement</span>
-          <strong>Cash Buyers</strong>
-        </div>
-
-        <p class="disclaimer">
-          Figures are preliminary estimates and have not been
-          independently verified. ARV, rental income, renovation
-          expenses and potential returns are not guaranteed.
-          Buyers must perform independent due diligence.
-        </p>
-      </aside>
-
-    </div>
-  </section>
-
-  <!-- INVESTMENT DETAILS -->
-  <section class="details-section">
-    <div class="container">
-
-      <div class="eyebrow">Acquisition Information</div>
-
-      <h2 class="section-heading">Important Considerations.</h2>
-
-      <p class="section-intro">
-        Review the following before submitting an offer or
-        expressing acquisition interest.
-      </p>
-
-      <div class="details-grid">
-
-        <div class="detail-item">
-          <h3>Property Condition</h3>
-          <p>
-            Full renovation is anticipated. No interior photographs
-            or detailed renovation report are currently provided.
-            Physical inspection is strongly recommended.
-          </p>
-        </div>
-
-        <div class="detail-item">
-          <h3>Buyer Due Diligence</h3>
-          <p>
-            Verify title, liens, taxes, occupancy, property condition,
-            permits and any other relevant records before closing.
-          </p>
-        </div>
-
-        <div class="detail-item">
-          <h3>Acquisition Strategy</h3>
-          <p>
-            Buyers may independently evaluate the property for a
-            renovation and resale strategy or a long-term rental
-            investment.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- LOCATION -->
-  <section>
-    <div class="container">
-      <div class="location-box">
-
-        <div>
-          <div class="eyebrow">Property Location</div>
-          <h2>Birmingham, Alabama</h2>
-          <p>2129 Powderly Ave SW, Birmingham, AL 35211</p>
-        </div>
-
-        <a
-          class="button"
-          href="https://www.google.com/maps/search/?api=1&query=2129+Powderly+Ave+SW+Birmingham+AL+35211"
-          target="_blank"
-          rel="noopener"
-        >
-          View Location
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- BUYER INQUIRY FORM -->
-  <section class="inquiry-section" id="buyer-inquiry">
-    <div class="container form-layout">
-
-      <div>
-        <div class="eyebrow">Buyer Registration</div>
-
-        <h2 class="section-heading">
-          Interested in This Property?
-        </h2>
-
-        <p class="form-note">
-          Submit your buyer information and acquisition interest.
-          Our team can review your inquiry and follow up regarding
-          the opportunity.
-        </p>
-
-        <p class="form-note">
-          Please provide accurate contact information so we can
-          respond to your inquiry.
-        </p>
-      </div>
-
-      <form
-        id="leadForm"
-        action="PASTE_YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL_HERE"
-        method="POST"
-        target="leadFrame"
-      >
-
-        <div class="form-group">
-          <label for="name">FULL NAME *</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Your full name"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="email">EMAIL ADDRESS</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Your email"
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="phone">PHONE NUMBER</label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            placeholder="Your phone number"
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="buyerType">BUYER TYPE *</label>
-          <select id="buyerType" name="buyerType" required>
-            <option value="">Select buyer type</option>
-            <option value="Cash Buyer">Cash Buyer</option>
-            <option value="Investor">Real Estate Investor</option>
-            <option value="Flipper">House Flipper</option>
-            <option value="Landlord">Landlord</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <div class="form-group full">
-          <label for="budget">INVESTMENT BUDGET / OFFER RANGE</label>
-          <input
-            id="budget"
-            name="budget"
-            type="text"
-            placeholder="e.g. $30,000 – $50,000"
-          >
-        </div>
-
-        <div class="form-group full">
-          <label for="message">ADDITIONAL INFORMATION</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            placeholder="Tell us about your buying criteria or questions..."
-          ></textarea>
-        </div>
-
-        <input
-          type="hidden"
-          name="property"
-          value="2129 Powderly Ave SW, Birmingham, AL 35211"
-        >
-
-        <!-- Hidden spam protection field -->
-        <div style="position:absolute;left:-9999px;" aria-hidden="true">
-          <label for="website">Leave this field empty</label>
-          <input
-            id="website"
-            name="website"
-            type="text"
-            tabindex="-1"
-            autocomplete="off"
-          >
-        </div>
-
-        <div class="form-submit">
-          <button class="button" id="submitBtn" type="submit">
-            Submit Buyer Inquiry
-          </button>
-        </div>
-
-        <p id="formStatus" role="status" aria-live="polite"></p>
-
-      </form>
-
-      <iframe
-        name="leadFrame"
-        id="leadFrame"
-        title="Form submission"
-        style="display:none;"
-      ></iframe>
-
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="container footer-content">
-
-    <div>
-      <div class="footer-brand">DEAL ROOM</div>
-      <div class="footer-copy">
-        Property information presented for buyer review.
-      </div>
-    </div>
-
-    <div class="footer-right">
-      Birmingham, Alabama<br>
-      Investment Opportunity
-    </div>
-
-  </div>
-</footer>
-
+<div class="page">
+<div class="topbar"><span class="tag">Single-family &middot; Birmingham, AL</span><span><span class="tag" style="margin-right:10px">Investor preview</span><button type="button" class="btn ghost small" id="theme" aria-label="Switch colour theme">Theme: Auto</button></span></div>
+<main id="app" class="page" style="padding:0;gap:20px"></main>
+</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+<div class="lb-bar"><span class="mono" id="lb-count"></span><button type="button" class="lb-btn" id="lb-close">Close</button></div>
+<div class="lb-stage"><button type="button" class="lb-nav prev" id="lb-prev" aria-label="Previous photo">&#8249;</button><img id="lb-img" alt=""><button type="button" class="lb-nav next" id="lb-next" aria-label="Next photo">&#8250;</button></div>
+<p class="lb-hint">Use the arrow keys or buttons to move between photos. Esc closes.</p></div>
 <script>
-const form = document.getElementById("leadForm");
-const statusText = document.getElementById("formStatus");
-const submitBtn = document.getElementById("submitBtn");
-const leadFrame = document.getElementById("leadFrame");
-
-let submitting = false;
-
-form.addEventListener("submit", function(event) {
-
-  if (!form.reportValidity()) {
-    event.preventDefault();
-    return;
+/* ===== SETTINGS: paste your Google Apps Script Web App /exec URL below ===== */
+var APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE";
+/* ===== PROPERTY DATA (from your deal.json). Everything here is preliminary until you verify it.
+   NOTE: this page is static, so the "unlock" is a soft gate: these details are visible in the page source. ===== */
+var D = {
+ "key": "powderly-2129",
+ "market": "on",
+ "address": "2129 Powderly Ave SW, Birmingham, AL 35211",
+ "city_state": "Birmingham, AL",
+ "beds": 3,
+ "baths": 1,
+ "sqft": 960,
+ "lot_sqft": 6098,
+ "year_built": 1945,
+ "price": 65500,
+ "down_pct": 20,
+ "rate": 8,
+ "years": 30,
+ "rent": 900,
+ "tax_monthly": 38,
+ "insurance_monthly": 26,
+ "reserve_pct": 20,
+ "reno": 10000,
+ "arv": 110000,
+ "flip_plus": true,
+ "photos": {
+  "hero": "photos/front_angle.jpg",
+  "hero_alt": "Front of the house: tan one-story home with a covered porch and a green lawn",
+  "teaser": [
+   {
+    "img": "photos/front_angle.jpg",
+    "alt": "Front of the house: tan one-story home with a covered porch and a green lawn"
+   },
+   {
+    "img": "photos/living1.jpg",
+    "alt": "Long living room with crown molding and brown carpet"
+   },
+   {
+    "img": "photos/kitchen.jpg",
+    "alt": "Kitchen with wood cabinets, a stainless range and plank flooring"
+   }
+  ],
+  "gallery": [
+   "photos/front_fence.jpg",
+   "photos/front_close.jpg",
+   "photos/living1.jpg",
+   "photos/living2.jpg",
+   "photos/living3.jpg",
+   "photos/kitchen.jpg",
+   "photos/bed1.jpg",
+   "photos/bed2.jpg",
+   "photos/bed3.jpg",
+   "photos/bed4.jpg",
+   "photos/bed5.jpg",
+   "photos/bed6.jpg",
+   "photos/den.jpg",
+   "photos/bath.jpg",
+   "photos/laundry.jpg",
+   "photos/tileroom.jpg",
+   "photos/back.jpg"
+  ],
+  "all": [
+   {
+    "img": "photos/front_angle.jpg",
+    "alt": "Front of the house: tan one-story home with a covered porch and a green lawn"
+   },
+   {
+    "img": "photos/front_fence.jpg",
+    "alt": "Front of the house seen through a chain-link fence"
+   },
+   {
+    "img": "photos/front_close.jpg",
+    "alt": "Front of the house, close view of the porch and door"
+   },
+   {
+    "img": "photos/living1.jpg",
+    "alt": "Long living room with crown molding and brown carpet"
+   },
+   {
+    "img": "photos/living2.jpg",
+    "alt": "Living room looking toward the front door and window"
+   },
+   {
+    "img": "photos/living3.jpg",
+    "alt": "Living room with brown carpet and a view into the kitchen"
+   },
+   {
+    "img": "photos/kitchen.jpg",
+    "alt": "Kitchen with wood cabinets, a stainless range and plank flooring"
+   },
+   {
+    "img": "photos/bed1.jpg",
+    "alt": "Bedroom with brown carpet, gray walls and a window"
+   },
+   {
+    "img": "photos/bed2.jpg",
+    "alt": "Bedroom with brown carpet, a window and a closet"
+   },
+   {
+    "img": "photos/bed3.jpg",
+    "alt": "Bedroom with brown carpet and a window"
+   },
+   {
+    "img": "photos/bed4.jpg",
+    "alt": "Bedroom with brown carpet, a closet and a view into the next room"
+   },
+   {
+    "img": "photos/bed5.jpg",
+    "alt": "Bedroom with brown carpet, a window and a ceiling vent"
+   },
+   {
+    "img": "photos/bed6.jpg",
+    "alt": "Bedroom with brown carpet, a closet door and a hallway"
+   },
+   {
+    "img": "photos/den.jpg",
+    "alt": "Room with brown carpet, a window and a tiled doorway"
+   },
+   {
+    "img": "photos/bath.jpg",
+    "alt": "Bathroom with a white vanity, toilet and tiled tub surround"
+   },
+   {
+    "img": "photos/laundry.jpg",
+    "alt": "Laundry area with a water heater, washer hookups and a window"
+   },
+   {
+    "img": "photos/tileroom.jpg",
+    "alt": "Empty room with light tile floor, gray walls and a door"
+   },
+   {
+    "img": "photos/back.jpg",
+    "alt": "Back of the house: tan siding, dark shingle roof and a grassy backyard"
+   }
+  ]
+ },
+ "comps": [
+  {
+   "address": "2001 Henry Crumpton Dr, Birmingham, AL 35211",
+   "price": 110000,
+   "beds": 2,
+   "baths": 1,
+   "sqft": 752,
+   "lot_acres": 0.2,
+   "year_built": 1950,
+   "miles": 0.39,
+   "img": "photos/comp1.jpg",
+   "alt": "Comparable house with light green siding"
+  },
+  {
+   "address": "1544 18th St SW, Birmingham, AL 35211",
+   "price": 100000,
+   "beds": 3,
+   "baths": 1,
+   "sqft": 950,
+   "lot_acres": 0.15,
+   "year_built": 1955,
+   "miles": 0.46,
+   "img": "photos/comp2.jpg",
+   "alt": "Comparable house with gray siding and a front porch"
   }
-
-  if (form.website.value.trim() !== "") {
-    event.preventDefault();
-    return;
-  }
-
-  if (form.action.includes("PASTE_YOUR_GOOGLE_APPS_SCRIPT")) {
-    event.preventDefault();
-    statusText.textContent =
-      "Google Sheets connection is not configured yet.";
-    return;
-  }
-
-  submitting = true;
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Submitting...";
-  statusText.textContent = "Please wait while we submit your inquiry.";
-
+ ],
+ "emd_min": 2000,
+ "offers_received": 0,
+ "condition": {
+  "title": "Major systems",
+  "items": [
+   {
+    "name": "HVAC",
+    "work": false
+   },
+   {
+    "name": "Electrical",
+    "work": false
+   },
+   {
+    "name": "Plumbing",
+    "work": false
+   },
+   {
+    "name": "Roof",
+    "work": false
+   },
+   {
+    "name": "Foundation",
+    "work": false
+   }
+  ],
+  "note": "Condition is as reported to us. Have a professional inspection done before you buy."
+ }
+};
+var $ = function(s,r){return (r||document).querySelector(s)}, $$ = function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var USD = function(n,c){return n.toLocaleString('en-US',{style:'currency',currency:'USD',minimumFractionDigits:c?2:0,maximumFractionDigits:c?2:0})};
+function calc(rent){var down=D.price*D.down_pct/100,loan=D.price-down,r=D.rate/1200,n=D.years*12,pmt=loan*r/(1-Math.pow(1+r,-n)),res=rent*D.reserve_pct/100,net=rent-pmt-D.tax_monthly-D.insurance_monthly-res;return{down:down,loan:loan,pmt:pmt,res:res,net:net,year:net*12,coc:net*12/down*100}}
+var C=calc(D.rent), FLIP=D.arv-D.price-D.reno;
+function img(o){return '<img src="'+o.img+'" alt="'+o.alt+'" loading="lazy" onerror="this.style.visibility=\'hidden\'">'}
+var CHECK='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+var LOCK='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>';
+var PRE='<p class="notice" style="margin-top:12px"><b>Preliminary.</b> Figures below come from the owner&#39;s own file and have not been independently verified.</p>';
+function field(id,label,type,extra,full){return '<div class="field'+(full?' full':'')+'"><label for="'+id+'">'+label+'</label><input id="'+id+'" type="'+type+'" '+(extra||'')+'><div class="err" id="e-'+id+'" role="alert"></div></div>'}
+var teaser=D.photos.teaser.map(function(p,i){return '<figure><button type="button" class="lbitem" data-lb="t" data-i="'+i+'" aria-label="Open photo '+(i+1)+'">'+img(p)+'</button></figure>'}).join('');
+var locks=[['Property address','0000 Locked Ave SW'],['Purchase price and loan terms','$00,000 &middot; 8% &middot; 30 yr'],['Full photo set and property facts','0 bd &middot; 0 ba &middot; 0,000 sq ft'],['Comparable sales','$000,000 &middot; 0.00 mi'],['Renovation and resale numbers','~$00,000 &middot; ARV $000,000'],['Monthly cash flow breakdown','Rent &minus; loan &minus; taxes']].map(function(l){return '<li>'+LOCK+'<span class="t"><b>'+l[0]+'</b><span class="blur" aria-hidden="true">'+l[1]+'</span></span></li>'}).join('');
+var all=D.photos.all;
+var thumbs=all.slice(1).map(function(p,i){return '<button type="button" class="lbitem" data-lb="a" data-i="'+(i+1)+'" aria-label="Open photo '+(i+2)+' of '+all.length+'"'+(i>7?' hidden':'')+'>'+img(p)+'</button>'}).join('');
+var comps=D.comps.map(function(c){return '<figure class="comp">'+img(c)+'<div><b>'+USD(c.price)+'</b><span class="addr">'+c.address+'</span><span>'+c.beds+' bd | '+c.baths+' ba | '+c.sqft+' sqft</span><span>'+c.lot_acres.toFixed(2)+' acre lot &middot; built '+c.year_built+'</span><span>'+c.miles.toFixed(2)+' mi away</span></div></figure>'}).join('');
+var sys=D.condition.items.map(function(s){return '<li class="'+(s.work?'fix':'ok')+'"><span class="ic" aria-hidden="true">'+(s.work?'!':'&times;')+'</span><span><span class="nm">'+s.name+'</span><span class="st">'+(s.work?'Work required':'No work required')+'</span></span></li>'}).join('');
+function tbl(cap,rows,total){return '<div class="tbl-wrap"><table><caption>'+cap+'</caption><tbody>'+rows.map(function(r,i){return '<tr'+(i==rows.length-1&&total?' class="total"':'')+'><th scope="row">'+r[0]+'</th><td'+(r[2]?' id="'+r[2]+'"':'')+'>'+r[1]+'</td></tr>'}).join('')+'</tbody></table></div>'}
+function tabset(id,a,b,pa,pb,ar){return '<div class="tabs" role="tablist" aria-label="'+ar+'"><button class="tab" role="tab" id="'+id+'-a" aria-controls="'+id+'-pa" aria-selected="true" type="button">'+a+'</button><button class="tab" role="tab" id="'+id+'-b" aria-controls="'+id+'-pb" aria-selected="false" tabindex="-1" type="button">'+b+'</button></div><div class="panel" role="tabpanel" id="'+id+'-pa" aria-labelledby="'+id+'-a">'+pa+'</div><div class="panel" role="tabpanel" id="'+id+'-pb" aria-labelledby="'+id+'-b" hidden>'+pb+'</div>'}
+var hold='<div class="two">'+tbl('Financing (conventional loan)',[['Purchase price',USD(D.price)],['Down payment ('+D.down_pct+'%)',USD(C.down)],['Loan amount',USD(C.loan)],['Monthly P&amp;I ('+D.rate+'%, '+D.years+' yr)',USD(C.pmt,1)]],1)+tbl('Monthly cash flow',[['Rental income',USD(D.rent,1),'c-rent'],['Mortgage payment','-'+USD(C.pmt,1)],['Property taxes','-'+USD(D.tax_monthly,1)],['Home insurance','-'+USD(D.insurance_monthly,1)],['CapEx &amp; management ('+D.reserve_pct+'%)','-'+USD(C.res,1),'c-res'],['Net monthly cash flow',USD(C.net,1),'c-net']],1)+'</div><div class="slider"><div class="row"><label for="rent"><b>What if the rent is different?</b></label><span class="mono" id="rent-out">'+USD(D.rent)+' / month</span></div><input type="range" id="rent" min="'+D.rent*.75+'" max="'+D.rent*1.25+'" step="25" value="'+D.rent+'"><p class="fine">The file assumes '+USD(D.rent)+'. Slide to see how rent changes the return. Closing costs and vacancy are not included.</p></div><div class="results"><div class="res"><div class="n" id="r-month">'+USD(C.net,1)+'</div><div class="l">Net per month</div></div><div class="res"><div class="n" id="r-year">'+USD(C.year)+'</div><div class="l">Net per year</div></div><div class="res"><div class="n" id="r-coc">'+C.coc.toFixed(2)+'%</div><div class="l">Cash-on-cash return</div></div></div>';
+var flip='<div class="two">'+tbl('Flip numbers',[['Purchase price',USD(D.price)],['Renovation (estimate)','~'+USD(D.reno)],['Projected resale value (ARV)',USD(D.arv)],['Potential profit','~'+USD(FLIP)+(D.flip_plus?'+':'')]],1)+'<div class="big-profit"><div class="n">'+USD(FLIP)+(D.flip_plus?'+':'')+'</div><p class="fine">Resale value minus purchase price minus renovation. Excludes closing, holding and selling costs. Renovation and resale values are estimates.</p></div></div>';
+function li(t){return '<li>'+CHECK+'<span>'+t+'</span></li>'}
+var sFlip='<div class="sumhead"><div class="n">'+USD(FLIP)+(D.flip_plus?'+':'')+'</div><div class="l">Projected profit if you fix and flip</div></div><ul class="checks">'+li('Buy at '+USD(D.price))+li('Renovate for about '+USD(D.reno)+' (estimate)')+li('Resell around '+USD(D.arv)+' (estimate)')+li('Potential profit before closing, holding and selling costs')+'</ul>';
+var sRent='<div class="sumhead"><div class="n">'+C.coc.toFixed(2)+'%</div><div class="l">Projected cash-on-cash return as a rental</div></div><ul class="checks">'+li(C.coc.toFixed(2)+'% on '+USD(C.down)+' down')+li(USD(C.net,1)+' net cash flow a month, '+USD(C.year)+' a year')+li('Rent of '+USD(D.rent)+' a month, '+D.reserve_pct+'% set aside for CapEx and management')+li('Loan payment of '+USD(C.pmt,1)+' a month ('+D.rate+'% over '+D.years+' years)')+'</ul>';
+var offer='<section class="card gate" aria-labelledby="in"><h2 id="in" style="font-size:24px">Make an offer</h2><p class="fine" style="margin-top:8px">This is a request to negotiate, not a contract. A purchase agreement is signed separately.</p><form class="fields" id="offer-form" novalidate>'+field('o-price','Your offer ($)','number','min="1" step="500" inputmode="numeric"')+field('o-emd','Earnest money deposit ($)','number','min="'+D.emd_min+'" step="100" value="'+D.emd_min+'" inputmode="numeric"')+field('o-close','Days to close','number','min="1" max="180" inputmode="numeric"')+field('o-insp','Inspection period (days)','number','min="0" max="60" inputmode="numeric"')+field('o-date','Earliest date you can inspect','date')+'<div class="field"><label for="o-pay">How will you pay?</label><select id="o-pay"><option value="">Choose one</option><option>Cash</option><option>Conventional loan</option><option>Hard money</option><option>Not sure yet</option></select><div class="err" id="e-o-pay" role="alert"></div></div><div class="field full"><label for="o-note">Anything else? (optional)</label><textarea id="o-note" maxlength="500"></textarea></div><div class="field full"><label class="check" for="o-ack"><input id="o-ack" type="checkbox"><span>I understand the earnest money deposit ('+USD(D.emd_min)+' minimum) is non-refundable once I sign.</span></label><div class="err" id="e-o-ack" role="alert"></div></div><div class="field full"><button class="btn" type="submit">Submit my offer</button><p class="status" id="offer-status" role="status"></p></div></form></section>';
+var privateHTML='<div class="private"><section class="card property"><div class="hero-photo"><div class="main-photo"><button type="button" class="lbitem" data-lb="a" data-i="0" aria-label="Open photo 1">'+img(all[0])+'</button></div><div class="thumbs">'+thumbs+'</div><button type="button" class="btn ghost small viewall" id="viewall">View all '+all.length+' photos</button></div><div><p class="eyebrow-dark">Property address &middot; '+D.city_state+'</p><h2 class="address">'+D.address+'</h2><div class="btn-row"><button type="button" class="btn ghost small" id="copy">Copy address</button><a class="btn ghost small" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(D.address)+'">Open in Maps</a></div><dl class="facts"><div><dt>Bedrooms</dt><dd>'+D.beds+'</dd></div><div><dt>Bathrooms</dt><dd>'+D.baths+'</dd></div><div><dt>Living area</dt><dd>'+D.sqft+' sq ft</dd></div><div><dt>Lot</dt><dd>'+D.lot_sqft.toLocaleString()+' sq ft</dd></div><div><dt>Built</dt><dd>'+D.year_built+'</dd></div><div><dt>Purchase price</dt><dd>'+USD(D.price)+'</dd></div></dl></div></section>'+
+'<section class="card" aria-label="Deal numbers">'+PRE+tabset('st','Buy and hold','Fix and flip',hold,flip,'Strategy')+'</section>'+
+'<section class="card" aria-labelledby="cd"><h2 id="cd" style="font-size:24px">Major systems</h2><p class="fine" style="margin-top:6px">A cross means no work is required.</p><ul class="sys">'+sys+'</ul><p class="fine" style="margin-top:12px">Condition is as reported by the owner and unverified. Have a professional inspection done before you buy.</p></section>'+
+'<section class="card" aria-labelledby="cp"><h2 id="cp" style="font-size:24px">Comparable sales</h2><p class="fine" style="margin-top:6px">Preliminary. Supplied by the owner and not independently verified. Check each sale against public records.</p><div class="comps">'+comps+'</div></section>'+
+'<section class="card summary" aria-labelledby="sm"><h2 id="sm" style="font-size:24px">Investment summary</h2>'+tabset('ss','Fix and flip','Rental investment',sFlip,sRent,'Summary strategy')+'</section>'+offer+'</div>';
+var gate='<section class="card gate" id="gate" aria-labelledby="gt"><h2 id="gt">Unlock the full file</h2><p class="lead">Enter your details and the full file opens on this page.</p><form class="fields" id="gate-form" novalidate>'+field('g-name','Full name','text','autocomplete="name"',1)+field('g-email','Email','email','autocomplete="email"')+field('g-phone','Phone number','tel','autocomplete="tel"')+'<div class="field full"><label class="check" for="g-ok"><input id="g-ok" type="checkbox"><span>I agree to be contacted about this property.</span></label><div class="err" id="e-g-ok" role="alert"></div></div><div class="field full"><button class="btn" type="submit">Unlock the file</button><p class="status" id="gate-status" role="status"></p></div></form></section>';
+$('#app').innerHTML='<section class="hero" aria-labelledby="h1"><p class="eyebrow">'+D.city_state+' &middot; Buy, rent or flip</p><h1 id="h1">Two ways to profit from one house.</h1><div class="stats"><div class="stat main"><div class="stat-num">'+C.coc.toFixed(2)+'%</div><div class="stat-label">Projected cash-on-cash return</div><div class="stat-sub">Buy and hold, '+D.down_pct+'% down. Preliminary estimate.</div></div><div class="stat"><div class="stat-num">'+USD(FLIP)+(D.flip_plus?'+':'')+'</div><div class="stat-label">Projected flip profit</div><div class="stat-sub">Before closing, holding and selling costs.</div></div><div class="stat"><div class="stat-num">'+USD(C.net,2)+'</div><div class="stat-label">Net cash flow each month</div><div class="stat-sub">After loan, taxes, insurance and a '+D.reserve_pct+'% reserve.</div></div></div></section><section class="card teaser" aria-labelledby="tz"><h2 id="tz">A first look &middot; '+D.city_state+'</h2><p class="fine" style="margin-top:6px">Tap a photo to see it larger. The address unlocks with the full file.</p><div class="tgrid many">'+teaser+'</div></section><section class="card locked" aria-labelledby="lk"><h2 id="lk">What is in the full file</h2><p class="lead">The address, comparable sales and line-by-line numbers are held back until you unlock the file.</p><ul class="locks">'+locks+'</ul></section>'+gate+'<div id="private" hidden>'+privateHTML+'</div><p class="legal">Projections are preliminary estimates, not guarantees. Assumptions: '+D.down_pct+'% down, an '+D.rate+'% '+D.years+'-year loan, '+USD(D.rent)+' monthly rent and '+D.reserve_pct+'% of rent set aside for CapEx and management. They exclude closing costs and vacancy. Verify every number yourself before you buy.</p>';
+/* tabs */
+$$('.tabs').forEach(function(t){var b=$$('[role=tab]',t);b.forEach(function(x,i){x.addEventListener('click',function(){pick(i)});x.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){pick((i+1)%b.length);b[(i+1)%b.length].focus()}})});function pick(k){b.forEach(function(x,j){x.setAttribute('aria-selected',j===k);x.tabIndex=j===k?0:-1;$('#'+x.getAttribute('aria-controls')).hidden=j!==k})}});
+/* rent slider */
+$('#rent').addEventListener('input',function(e){var v=+e.target.value,c=calc(v);$('#rent-out').textContent=USD(v)+' / month';$('#c-rent').textContent=USD(v,1);$('#c-res').textContent='-'+USD(c.res,1);$('#c-net').textContent=USD(c.net,1);$('#r-month').textContent=USD(c.net,1);$('#r-year').textContent=USD(c.year);$('#r-coc').textContent=c.coc.toFixed(2)+'%'});
+/* lightbox */
+var lbList=[],lbI=0,lbBtn=null;
+function lbShow(){var p=lbList[lbI];$('#lb-img').src=p.img;$('#lb-img').alt=p.alt;$('#lb-count').textContent=(lbI+1)+' / '+lbList.length}
+function lbOpen(l,i,b){lbList=l;lbI=i;lbBtn=b;lbShow();$('#lb').hidden=false;$('#lb-close').focus()}
+function lbStep(d){lbI=(lbI+d+lbList.length)%lbList.length;lbShow()}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-lb]');if(b)lbOpen(b.dataset.lb==='t'?D.photos.teaser:all,+b.dataset.i,b)});
+$('#viewall').addEventListener('click',function(e){$$('.thumbs [hidden]').forEach(function(x){x.hidden=false});e.target.hidden=true});
+$('#lb-close').addEventListener('click',function(){$('#lb').hidden=true;if(lbBtn)lbBtn.focus()});
+$('#lb-prev').addEventListener('click',function(){lbStep(-1)});$('#lb-next').addEventListener('click',function(){lbStep(1)});
+document.addEventListener('keydown',function(e){if($('#lb').hidden)return;if(e.key==='Escape')$('#lb-close').click();if(e.key==='ArrowLeft')lbStep(-1);if(e.key==='ArrowRight')lbStep(1)});
+$('#copy').addEventListener('click',function(e){var b=e.target;function ok(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy address'},1500)}if(navigator.clipboard)navigator.clipboard.writeText(D.address).then(ok,function(){b.textContent='Copy failed'});else b.textContent='Copy not supported'});
+/* theme */
+var modes=['auto','light','dark'],mi=0;
+function setTheme(m){var r=document.documentElement;if(m==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',m);$('#theme').textContent='Theme: '+m.charAt(0).toUpperCase()+m.slice(1)}
+try{var sv=localStorage.getItem('deal-theme');if(sv&&modes.indexOf(sv)>-1){mi=modes.indexOf(sv);setTheme(sv)}}catch(e){}
+$('#theme').addEventListener('click',function(){mi=(mi+1)%3;setTheme(modes[mi]);try{localStorage.setItem('deal-theme',modes[mi])}catch(e){}});
+/* sending to Google Sheets */
+function configured(){return /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(APPS_SCRIPT_URL)}
+function send(type,data){
+  if(!configured())return Promise.resolve({ok:false,msg:'Not sent: the Google Sheets form endpoint is not connected yet.'});
+  var body=JSON.stringify(Object.assign({type:type,page:location.href,time:new Date().toISOString()},data)),o={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body};
+  return fetch(APPS_SCRIPT_URL,o).then(function(r){return r.json()}).then(function(j){return j&&j.ok?{ok:true,msg:'Received. Thank you.'}:{ok:false,msg:'The endpoint answered but did not confirm. Please contact the owner directly.'}})
+  .catch(function(){return fetch(APPS_SCRIPT_URL,Object.assign({mode:'no-cors'},o)).then(function(){return{ok:true,msg:'Sent, but this browser cannot confirm receipt. If you hear nothing, contact the owner directly.'}},function(){return{ok:false,msg:'Not sent: network error. Please try again or contact the owner directly.'}})});
+}
+function err(id,m){$('#e-'+id).textContent=m||'';var f=$('#'+id);if(f)f.setAttribute('aria-invalid',m?'true':'false');return !m}
+$('#gate-form').addEventListener('submit',function(e){e.preventDefault();
+  var n=$('#g-name').value.trim(),m=$('#g-email').value.trim(),p=$('#g-phone').value.trim(),a=$('#g-ok').checked;
+  var v=[err('g-name',n.length<2?'Enter your full name.':''),err('g-email',/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)?'':'Enter a valid email.'),err('g-phone',p.replace(/\D/g,'').length<7?'Enter a valid phone number.':''),err('g-ok',a?'':'Please tick to continue.')];
+  if(v.indexOf(false)>-1)return;
+  var s=$('#gate-status');s.textContent='Sending...';
+  send('unlock',{name:n,email:m,phone:p}).then(function(r){s.textContent=r.msg;$('#private').hidden=false;if($('#private').scrollIntoView)$('#private').scrollIntoView({behavior:'smooth'})});
 });
-
-leadFrame.addEventListener("load", function() {
-
-  if (!submitting) return;
-
-  submitting = false;
-  submitBtn.disabled = false;
-  submitBtn.textContent = "Submit Buyer Inquiry";
-
-  statusText.textContent =
-    "Your inquiry has been sent. Please contact us if you need confirmation.";
-
-  form.reset();
-
+$('#offer-form').addEventListener('submit',function(e){e.preventDefault();
+  var g=function(i){return $('#'+i).value.trim()},pr=+g('o-price'),em=+g('o-emd'),cl=+g('o-close'),ins=g('o-insp'),dt=g('o-date'),py=g('o-pay');
+  var v=[err('o-price',pr>0?'':'Enter your offer.'),err('o-emd',em>=D.emd_min?'':'Minimum is '+USD(D.emd_min)+'.'),err('o-close',cl>=1&&cl<=180?'':'Enter 1 to 180 days.'),err('o-insp',ins!==''&&+ins>=0&&+ins<=60?'':'Enter 0 to 60 days.'),err('o-date',dt?'':'Choose a date.'),err('o-pay',py?'':'Choose one.'),err('o-ack',$('#o-ack').checked?'':'Please tick to confirm.')];
+  if(v.indexOf(false)>-1)return;
+  var s=$('#offer-status');s.textContent='Sending...';
+  send('offer',{name:g('g-name'),email:g('g-email'),phone:g('g-phone'),offer:pr,emd:em,daysToClose:cl,inspectionDays:+ins,inspectDate:dt,payment:py,note:g('o-note')}).then(function(r){s.textContent=r.msg});
 });
 </script>
-
+ 
 </body>
 </html>
+ 
